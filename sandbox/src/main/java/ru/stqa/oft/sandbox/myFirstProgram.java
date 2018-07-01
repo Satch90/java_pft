@@ -1,5 +1,9 @@
 package ru.stqa.oft.sandbox;
 
+import com.sun.xml.internal.bind.v2.util.EditDistance;
+import sun.awt.geom.AreaOp;
+import javax.swing.plaf.synth.SynthPopupMenuUI;
+
 import static java.lang.Math.pow;
 
 public class myFirstProgram {
@@ -26,14 +30,17 @@ public class myFirstProgram {
         //boolean weryfikacja = verify(p1, p2, distance);
        // System.out.println("Verification status (true / false):" + weryfikacja);
 
+
+
       Point p1 = new Point(1, 1);
-      Point p2 = new Point(6, 9);
+      Point p2 = new Point(6, 4);
 
 
-      //Point p = new Point((p1.x, p1.y)(p2.x)(p2.y));
+     // System.out.println(distance);
 
 
-        System.out.println("Distance between points:" + p1.area(p1,p2));
+      System.out.println("Distance between points:" + p1.area(p1, p2));
+      System.out.println("Verification status (true / false):" + area(p1,p2));
 
 
 
@@ -50,23 +57,25 @@ public class myFirstProgram {
     //return a * b;
     //}
 
-//    public static boolean verify(Point p1, Point p2, double wynikDistance){
-//        double dx;
-//        double dy;
-//        dx = p2.x - p1.x;
-//        dy = p2.y - p1.y;
-//
-//        double wynik;
-//        wynik = pow(dx, 2) + pow(dy,2);
-//
-//
-//        if((int) wynik == (int) pow(wynikDistance,2) ){
-//            return true;
-//
-//        }
-//        else{
-//            return false;
-//        }
-//
-//    }
+    public static boolean area(Point p1, Point p2){
+        double dx;
+        double dy;
+      dx = p2.x - p1.x;
+      dy = p2.y - p1.y;
+
+        double wynik;
+        wynik = pow(dx, 2) + pow(dy,2);
+
+
+      double distance = p1.area(p1,p2);
+      if((int) wynik == (int) pow(distance,2) ){
+            return true;
+
+        }
+        else{
+            return false;
+        }
+
+    }
+
 }
