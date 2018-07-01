@@ -1,15 +1,13 @@
 package ru.stqa.oft.sandbox;
-
+import org.testng.Assert;
 import org.testng.annotations.Test;
 
 public class SquareTest {
 
   @Test
-  public  void testArea{
-
-
+  public  void testArea(){
 
     Square s = new Square(5);
-    assert s.area() == 12;
+    Assert.assertEquals(s.area(), 25.0);
   }
 }
