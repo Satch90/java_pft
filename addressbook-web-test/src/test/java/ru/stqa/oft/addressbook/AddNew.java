@@ -2,14 +2,11 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.Test;
-import static org.testng.Assert.*;
 
 import java.util.concurrent.TimeUnit;
-import java.util.Date;
-import java.io.File;
-import org.openqa.selenium.interactions.Actions;
+
 import org.openqa.selenium.*;
-import static org.openqa.selenium.OutputType.*;
+import ru.stqa.oft.addressbook.AddNewData;
 
 public class AddNew {
     ChromeDriver wd;
@@ -23,34 +20,48 @@ public class AddNew {
     
     @Test
     public void testAddNew() {
-        wd.get("http://localhost/addressbook/edit.php");
-        wd.findElement(By.name("user")).click();
-        wd.findElement(By.name("user")).sendKeys("\\undefined");
-        wd.findElement(By.name("pass")).click();
-        wd.findElement(By.name("pass")).clear();
-        wd.findElement(By.name("pass")).sendKeys("secret");
-        wd.findElement(By.name("user")).click();
-        wd.findElement(By.name("user")).clear();
-        wd.findElement(By.name("user")).sendKeys("admin");
-        wd.findElement(By.id("LoginForm")).click();
-        wd.findElement(By.xpath("//form[@id='LoginForm']/input[3]")).click();
-        wd.findElement(By.linkText("add new")).click();
-        wd.findElement(By.name("firstname")).click();
-        wd.findElement(By.name("firstname")).clear();
-        wd.findElement(By.name("firstname")).sendKeys("Imie_test1");
-        wd.findElement(By.name("lastname")).click();
-        wd.findElement(By.name("lastname")).clear();
-        wd.findElement(By.name("lastname")).sendKeys("Test2");
-        wd.findElement(By.name("address")).click();
-        wd.findElement(By.name("address")).clear();
-        wd.findElement(By.name("address")).sendKeys("Wroclaw test1");
-        wd.findElement(By.name("home")).click();
-        wd.findElement(By.name("home")).clear();
-        wd.findElement(By.name("home")).sendKeys("999888777");
-        wd.findElement(By.xpath("//div[@id='content']/form/input[21]")).click();
+        login("admin", "secret");
+        gotoAddNew();
+        fillAddNew(new AddNewData("test1", "Test2", "Wroclaw test1", "999888777"));
+        returntoAddNew();
+    }
+
+    private void returntoAddNew() {
         wd.findElement(By.linkText("add new")).click();
     }
-    
+
+    private void fillAddNew(AddNewData addNewData) {
+        wd.findElement(By.name("firstname")).click();
+        wd.findElement(By.name("firstname")).clear();
+        wd.findElement(By.name("firstname")).sendKeys(addNewData.getFirstname());
+        wd.findElement(By.name("lastname")).click();
+        wd.findElement(By.name("lastname")).clear();
+        wd.findElement(By.name("lastname")).sendKeys(addNewData.getLastname());
+        wd.findElement(By.name("address")).click();
+        wd.findElement(By.name("address")).clear();
+        wd.findElement(By.name("address")).sendKeys(addNewData.getAddress());
+        wd.findElement(By.name("home")).click();
+        wd.findElement(By.name("home")).clear();
+        wd.findElement(By.name("home")).sendKeys(addNewData.getPhonehome());
+        wd.findElement(By.xpath("//div[@id='content']/form/input[21]")).click();
+    }
+
+    private void gotoAddNew() {
+        wd.findElement(By.linkText("add new")).click();
+    }
+
+    private void login(String user, String password) {
+        wd.get("http://localhost/addressbook/edit.php");
+        wd.findElement(By.name("user")).click();
+        wd.findElement(By.name("user")).clear();
+        wd.findElement(By.name("user")).sendKeys(user);
+        wd.findElement(By.name("pass")).click();
+        wd.findElement(By.name("pass")).clear();
+        wd.findElement(By.name("pass")).sendKeys(password);
+        wd.findElement(By.id("LoginForm")).click();
+        wd.findElement(By.xpath("//form[@id='LoginForm']/input[3]")).click();
+    }
+
     @AfterMethod
     public void tearDown() {
         wd.quit();
