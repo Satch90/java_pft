@@ -1,7 +1,5 @@
 package ru.stqa.oft.addressbook.addmanager;
 
-import org.openqa.selenium.By;
-import org.openqa.selenium.NoAlertPresentException;
 import org.openqa.selenium.chrome.ChromeDriver;
 
 import java.util.concurrent.TimeUnit;
@@ -28,7 +26,6 @@ public class ApplicationManager {
   }
 
 
-  }
 
   public void stop() {
     wd.quit();
