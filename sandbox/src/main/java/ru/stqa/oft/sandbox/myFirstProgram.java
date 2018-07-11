@@ -33,6 +33,9 @@ public class myFirstProgram {
     Point p1 = new Point(1, 1);
     Point p2 = new Point(6, 4);
 
+    String nowy = (asdf, asdf);
+
+
 
     // System.out.println(distance);
 
