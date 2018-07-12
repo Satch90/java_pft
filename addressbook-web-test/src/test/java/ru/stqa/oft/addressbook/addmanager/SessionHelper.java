@@ -18,4 +18,3 @@ public class SessionHelper extends HelperBase {
     click(By.xpath("//form[@id='LoginForm']/input[3]"));
   }
 }
-
