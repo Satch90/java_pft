@@ -1,25 +1,20 @@
 package ru.stqa.oft.sandbox;
 
 public class Point {
+  public double p1;
+  public double p2;
 
 
-  public double x;
-  public double y;
-
-  public Point(double x, double y) {
-    this.x = x;
-    this.y = y;
+  public Point(double p1, double p2){
+    this.p1 = p1;
+    this.p2 = p2;
   }
 
 
-  public double area(Point p1, Point p2){ //P
-    double dx;
-    double dy;
-    dx = p2.x - p1.x;
-    dy = p2.y - p1.y;
-
+  public double distance(Point p) {
+    double dx = this.p1 - p.p1;
+    double dy =  this.p2 - p.p2;
     return Math.sqrt((dx * dx) + (dy * dy));
 
   }
-
-  }
+}
