@@ -33,4 +33,13 @@ public class UserHelper extends HelperBase{
     click(By.xpath("//div[@id='content']/form[1]/input[22]"));
 
   }
+
+  public void clicToSelectUser() {
+    click(By.id("21"));
+
+  }
+
+  public void clicToDeleteUser() {
+    click(By.xpath("//div[@id='content']/form[2]/div[2]/input"));
+  }
 }

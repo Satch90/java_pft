@@ -12,5 +12,4 @@ public class UserModificationTests extends TestBase{
     app.getUserHelper().fillUserForm(new UserData("Beata","Luzniak","Mirkowl","test@test1.p","999888777"));
     app.getUserHelper().clicToUpdateUser();
   }
-
 }
