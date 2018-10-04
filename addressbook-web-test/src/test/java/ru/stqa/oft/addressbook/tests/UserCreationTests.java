@@ -12,5 +12,4 @@ public class UserCreationTests extends TestBase{
     app.getUserHelper().submitUserCreation();
 
     }
-
 }

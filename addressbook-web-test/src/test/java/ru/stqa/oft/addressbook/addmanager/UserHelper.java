@@ -23,4 +23,14 @@ public class UserHelper extends HelperBase{
     click(By.xpath("//div[@id='content']/form/input[21]"));
 
   }
+
+  public void clicToEditUser() {
+
+    click(By.xpath("//table[@id='maintable']/tbody/tr[2]/td[8]/a/img"));
+  }
+
+  public void clicToUpdateUser() {
+    click(By.xpath("//div[@id='content']/form[1]/input[22]"));
+
+  }
 }
