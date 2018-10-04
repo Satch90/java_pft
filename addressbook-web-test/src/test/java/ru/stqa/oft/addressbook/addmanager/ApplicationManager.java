@@ -11,6 +11,8 @@ public class ApplicationManager {
   private  SessionHelper sessionHelper;
   private  NawigationHelper nawigationHelper;
   private  GroupHelper groupHelper ;
+  private  UserHelper userHelper ;
+
 
 
 
@@ -21,6 +23,7 @@ public class ApplicationManager {
     wd.get("http://localhost/addressbook/group.php");
     groupHelper = new GroupHelper(wd);
     nawigationHelper = new NawigationHelper(wd);
+    userHelper = new UserHelper(wd);
     sessionHelper = new SessionHelper(wd);
     sessionHelper.login("admin", "secret");
   }
@@ -33,6 +36,10 @@ public class ApplicationManager {
 
   public GroupHelper getGroupHelper() {
     return groupHelper;
+  }
+
+  public UserHelper getUserHelper() {
+    return userHelper;
   }
 
   public NawigationHelper getNawigationHelper() {
