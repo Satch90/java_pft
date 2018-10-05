@@ -9,9 +9,7 @@ public class UserDeletionTests extends TestBase{
     app.getNawigationHelper().gotoHomePage();
     app.getUserHelper().clicToSelectUser();
     app.getUserHelper().clicToDeleteUser();
-    wd.wait(5000);
-    wd.switchTo().alert().accept();
-
+    app.getUserHelper().closeAlert();
 
 
   }
