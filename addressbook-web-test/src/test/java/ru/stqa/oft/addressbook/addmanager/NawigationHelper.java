@@ -1,11 +1,10 @@
 package ru.stqa.oft.addressbook.addmanager;
 
 import org.openqa.selenium.By;
-import org.openqa.selenium.chrome.ChromeDriver;
-
+import org.openqa.selenium.WebDriver;
 public class NawigationHelper extends HelperBase{
 
-  public NawigationHelper(ChromeDriver wd) {
+  public NawigationHelper(WebDriver wd) {
     super(wd);
   }
 

@@ -1,11 +1,11 @@
 package ru.stqa.oft.addressbook.addmanager;
 
 import org.openqa.selenium.By;
-import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.WebDriver;
 import ru.stqa.oft.addressbook.model.UserData;
 
 public class UserHelper extends HelperBase{
-  public UserHelper(ChromeDriver wd) {
+  public UserHelper(WebDriver wd) {
     super(wd);
   }
 

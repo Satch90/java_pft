@@ -1,19 +1,17 @@
 package ru.stqa.oft.addressbook.tests;
 
-import org.openqa.selenium.chrome.ChromeDriver;
+
+import org.openqa.selenium.remote.BrowserType;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import ru.stqa.oft.addressbook.addmanager.ApplicationManager;
 
 public class TestBase {
-  protected final ApplicationManager app = new ApplicationManager();
-  //    FirefoxDriver wd;
-  ChromeDriver wd;
+  protected final ApplicationManager app = new ApplicationManager(BrowserType.FIREFOX );
 
   @BeforeMethod
   public void setUp() throws Exception {
-//        wd = new FirefoxDriver(new FirefoxOptions().setLegacy(true));
-    System.setProperty("webdriver.chrome.driver", "/Applications/chromedriver");
+
     app.init();
 
   }
@@ -23,7 +21,4 @@ public class TestBase {
     app.stop();
   }
 
-//  protected void selectGroup() {
-//      wd.findElement(By.name("selected[]")).click();
-//  }
 }
