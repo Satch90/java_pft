@@ -8,7 +8,7 @@ public class UserCreationTests extends TestBase{
   @Test
   public void testUserCreation() {
     app.getNawigationHelper().gotoUserPage();
-    app.getUserHelper().fillUserForm(new UserData("Bartosz","Kasperowicz", "Wroclaw","test@test.pl","667556445"));
+    app.getUserHelper().fillUserForm(new UserData("Bartosz","Kasperowicz", "Wroclaw","test@test.pl","667556445", "test1"), true);
     app.getUserHelper().submitUserCreation();
 
     }

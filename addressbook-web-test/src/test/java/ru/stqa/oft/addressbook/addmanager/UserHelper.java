@@ -1,7 +1,10 @@
 package ru.stqa.oft.addressbook.addmanager;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.support.ui.Select;
+import org.testng.Assert;
 import ru.stqa.oft.addressbook.model.UserData;
 
 public class UserHelper extends HelperBase{
@@ -10,12 +13,20 @@ public class UserHelper extends HelperBase{
   }
 
 
-  public void fillUserForm(UserData userData) {
-    type(By.name("firstname"),userData.getFirstName());
-    type(By.name("lastname"),userData.getLastName());
-    type(By.name("address"),userData.getAdress());
-    type(By.name("email"),userData.getEmail());
-    type(By.name("mobile"),userData.getMobile());
+  public void fillUserForm(UserData userData, boolean creation) {
+    type(By.name("firstname"), userData.getFirstName());
+    type(By.name("lastname"), userData.getLastName());
+    type(By.name("address"), userData.getAdress());
+    type(By.name("email"), userData.getEmail());
+    type(By.name("mobile"), userData.getMobile());
+
+
+    if(creation){
+      new Select(wd.findElement(By.name("new_group"))).selectByVisibleText(userData.getGroup());
+
+    } else {
+      Assert.assertFalse(isElementPresent(By.name("new_group")));
+    }
 
   }
 
