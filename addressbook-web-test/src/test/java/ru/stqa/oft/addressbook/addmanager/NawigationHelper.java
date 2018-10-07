@@ -29,6 +29,4 @@ public class NawigationHelper extends HelperBase{
     click(By.linkText("home"));
 
   }
-
-
 }
