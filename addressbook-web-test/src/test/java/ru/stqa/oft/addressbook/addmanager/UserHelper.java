@@ -1,9 +1,11 @@
 package ru.stqa.oft.addressbook.addmanager;
 
+import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
-import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import ru.stqa.oft.addressbook.model.UserData;
 
@@ -19,6 +21,7 @@ public class UserHelper extends HelperBase{
     type(By.name("address"), userData.getAdress());
     type(By.name("email"), userData.getEmail());
     type(By.name("mobile"), userData.getMobile());
+
 
 
     if(creation){
@@ -52,9 +55,32 @@ public class UserHelper extends HelperBase{
 
   public void clicToDeleteUser() {
     click(By.xpath("//div[@id='content']/form[2]/div[2]/input"));
+
   }
 
   public void closeAlert() {
     wd.switchTo().alert().accept();
+
+  }
+  public void checkAlert() {
+    try {
+      WebDriverWait wait = new WebDriverWait(wd, 1);
+      wait.until(ExpectedConditions.alertIsPresent());
+      Alert alert = wd.switchTo().alert();
+      alert.accept();
+    } catch (Exception e) {
+      //exception handling
+    }
+  }
+
+  public void createUser(UserData user) {
+    click(By.linkText("add new"));
+    fillUserForm(user, true);
+    submitUserCreation();
+
+  }
+
+  public boolean isThereAUser() {
+    return isElementPresent(By.name("selected[]"));
   }
 }
