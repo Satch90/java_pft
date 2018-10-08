@@ -46,7 +46,7 @@ public class UserHelper extends HelperBase{
   }
 
   public void clicToSelectUser() {
-    click(By.id("21"));
+    click(By.name("selected[]"));
 
   }
 
