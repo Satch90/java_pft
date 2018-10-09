@@ -1,5 +1,6 @@
 package ru.stqa.oft.addressbook.tests;
 
+import org.testng.Assert;
 import org.testng.annotations.Test;
 import ru.stqa.oft.addressbook.model.UserData;
 

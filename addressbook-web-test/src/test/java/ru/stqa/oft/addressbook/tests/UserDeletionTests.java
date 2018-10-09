@@ -15,6 +15,6 @@ public class UserDeletionTests extends TestBase {
     app.getUserHelper().clicToSelectUser();
     app.getUserHelper().clicToDeleteUser();
     app.getUserHelper().closeAlert();
-    
+
   }
 }
