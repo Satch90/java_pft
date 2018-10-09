@@ -4,21 +4,28 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 import ru.stqa.oft.addressbook.model.GroupData;
 
+import java.util.List;
+
 public class GroupDeletionTests extends TestBase {
 
 
   @Test
   public void testGroupDeletion() {
     app.getNawigationHelper().gotoGroupPage();
-    int befor = app.getGroupHelper().getGroupCount();
+
     if (!app.getGroupHelper().isThereGroup()) {
       app.getGroupHelper().createGroup(new GroupData("test1", null, null));
     }
-    app.getGroupHelper().selectGroup();
+    List<GroupData> before = app.getGroupHelper().getGroupList();
+    app.getGroupHelper().selectGroup(before.size() - 1);
     app.getGroupHelper().deleteSelectedGroups();
     app.getGroupHelper().returnToGroupPage();
-    int after = app.getGroupHelper().getGroupCount();
-    Assert.assertEquals(after, befor - 1);
+    List<GroupData> after = app.getGroupHelper().getGroupList();
+    Assert.assertEquals(after.size(), before.size() - 1);
+
+    before.remove(before.size() - 1);
+      Assert.assertEquals(before, after);
+
   }
 
 }
