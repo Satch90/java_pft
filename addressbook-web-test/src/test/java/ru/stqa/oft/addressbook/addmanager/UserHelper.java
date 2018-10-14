@@ -3,13 +3,17 @@ package ru.stqa.oft.addressbook.addmanager;
 import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import ru.stqa.oft.addressbook.model.UserData;
 
-public class UserHelper extends HelperBase{
+import java.util.ArrayList;
+import java.util.List;
+
+public class UserHelper extends HelperBase {
   public UserHelper(WebDriver wd) {
     super(wd);
   }
@@ -18,13 +22,12 @@ public class UserHelper extends HelperBase{
   public void fillUserForm(UserData userData, boolean creation) {
     type(By.name("firstname"), userData.getFirstName());
     type(By.name("lastname"), userData.getLastName());
-    type(By.name("address"), userData.getAdress());
-    type(By.name("email"), userData.getEmail());
-    type(By.name("mobile"), userData.getMobile());
+//    type(By.name("address"), userData.getAdress());
+//    type(By.name("email"), userData.getEmail());
+//    type(By.name("mobile"), userData.getMobile());
 
 
-
-    if(creation){
+    if (creation) {
       new Select(wd.findElement(By.name("new_group"))).selectByVisibleText(userData.getGroup());
 
     } else {
@@ -62,6 +65,7 @@ public class UserHelper extends HelperBase{
     wd.switchTo().alert().accept();
 
   }
+
   public void checkAlert() {
     try {
       WebDriverWait wait = new WebDriverWait(wd, 1);
@@ -83,4 +87,22 @@ public class UserHelper extends HelperBase{
   public boolean isThereAUser() {
     return isElementPresent(By.name("selected[]"));
   }
-}
+
+
+  public List<UserData> getUserList() {
+    List<UserData> users = new ArrayList<UserData>();
+    List<WebElement> rows = wd.findElements(By.name("entry"));
+    for (WebElement row : rows) {
+      List<WebElement> cells = row.findElements(By.tagName("td"));
+      String firstName = cells.get(2).getText();
+      String lastName = cells.get(1).getText();
+
+
+      int id = Integer.parseInt(row.findElement(By.tagName("input")).getAttribute("value"));
+
+      UserData user = new UserData(id, firstName, lastName, "test1");
+      users.add(user);
+    }
+      return users;
+    }
+  }
