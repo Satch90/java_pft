@@ -10,18 +10,18 @@ public class UserDeletionTests extends TestBase {
 
   @Test
   public void tesUsertDeletion() throws InterruptedException {
-    app.getNawigationHelper().gotoHomePage();
+    app.goTo().gotoHomePage();
 
     if (! app.getUserHelper().isThereAUser()) {
       app.getUserHelper().createUser(new UserData("Bartosz", "Kaspero","test1"));
     }
     List<UserData> before = app.getUserHelper().getUserList();
 
-    app.getNawigationHelper().gotoHomePage();
+    app.goTo().gotoHomePage();
     app.getUserHelper().clicToSelectUser();
     app.getUserHelper().clicToDeleteUser();
     app.getUserHelper().closeAlert();
-    app.getNawigationHelper().gotoHomePage();
+    app.goTo().gotoHomePage();
     List<UserData> after = app.getUserHelper().getUserList();
 
     Assert.assertEquals(after.size(), before.size() - 1);

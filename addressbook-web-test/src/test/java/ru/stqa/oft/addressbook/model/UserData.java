@@ -25,30 +25,6 @@ public class UserData {
     this.group = group;
   }
 
-//  public UserData(int id, String firstName, String lastName, String adress, String email,String mobile, String group) {
-//    this.id = id;
-//    this.firstName = firstName;
-//    this.lastName = lastName;
-//    this.adress = adress;
-//    this.email = email;
-//    this.mobile = mobile;
-//
-//    this.group = group;
-//  }
-@Override
-public boolean equals(Object o) {
-  if (this == o) return true;
-  if (o == null || getClass() != o.getClass()) return false;
-  UserData that = (UserData) o;
-  return Objects.equals(id, that.id) &&
-          Objects.equals(firstName, that.firstName) &&
-          Objects.equals(lastName, that.lastName);
-}
-
-  @Override
-  public int hashCode() {
-    return Objects.hash(id, firstName, lastName);
-  }
   @Override
   public String toString() {
     return "PersonData{" +

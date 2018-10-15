@@ -12,18 +12,18 @@ public class UserModificationTests extends TestBase{
 
   @Test
   private void testUserModification(){
-    app.getNawigationHelper().gotoHomePage();
+    app.goTo().gotoHomePage();
     if (! app.getUserHelper().isThereAUser()) {
       app.getUserHelper().createUser(new UserData("Bartosz", "Kaspero","test1"));
     }
 
     List<UserData> before = app.getUserHelper().getUserList();
 
-    app.getNawigationHelper().gotoHomePage();
+    app.goTo().gotoHomePage();
     app.getUserHelper().clicToEditUser();
     app.getUserHelper().fillUserForm(new UserData("Bartosz", "Kaspero","test1"), false);
     app.getUserHelper().clicToUpdateUser();
-    app.getNawigationHelper().gotoHomePage();
+    app.goTo().gotoHomePage();
     List<UserData> after = app.getUserHelper().getUserList();
     Assert.assertEquals(after.size(), before.size());
 

@@ -10,11 +10,11 @@ public class UserCreationTests extends TestBase{
 
   @Test
   public void testUserCreation() {
-    app.getNawigationHelper().gotoHomePage();
+    app.goTo().gotoHomePage();
     List<UserData> before = app.getUserHelper().getUserList();
     UserData user = new UserData("Bartosz", "Kaspero","test1");
     app.getUserHelper().createUser(user);
-    app.getNawigationHelper().gotoHomePage();
+    app.goTo().gotoHomePage();
     List<UserData> after = app.getUserHelper().getUserList();
     Assert.assertEquals(after.size(), before.size() + 1);
 
