@@ -6,9 +6,6 @@ public class UserData {
   private int id;
   private final String firstName;
   private final String lastName;
-//  private final String adress;
-//  private final String email;
-//  private final String mobile;
   private String group;
 
   public UserData(int id, String firstName, String lastName, String group) {
@@ -33,19 +30,23 @@ public class UserData {
             ", lastName='" + lastName + '\'' +
             '}';
   }
-
-
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    UserData that = (UserData) o;
+    return Objects.equals(firstName, that.firstName) &&
+            Objects.equals(lastName, that.lastName);
+  }
+  @Override
+  public int hashCode() {
+    return Objects.hash(firstName, lastName);
+  }
   public int getId() { return id; }
 
   public String getFirstName() { return firstName; }
+
   public String getLastName() { return lastName; }
-
-//  public String getAdress() { return adress; }
-//
-//  public String getEmail() { return email; }
-//
-//  public String getMobile() { return mobile; }
-
 
   public String getGroup() {
     return group;
